@@ -18,41 +18,7 @@
     "url": "https://github.com/CaliStyle/ng-intercom/issues"
   },
   "homepage": "https://github.com/CaliStyle/ng-intercom#readme",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "run-s build:client build:aot build:server",
-    "build:prod": "run-s build:client:prod build:aot:prod build:server",
-    "build:staging": "run-s build:client:staging build:aot:staging build:server:staging",
-    "build:testing": "run-s build:client:testing build:aot:testing build:server:testing",
-    "build:client": "ng build --app 0",
-    "build:client:prod": "ng build --prod --build-optimizer --app 0",
-    "build:client:staging": "ng build --environment=staging --app 0",
-    "build:client:testing": "ng build --environment=testing --app 0",
-    "build:aot": "ng build --aot --app 1",
-    "build:aot:prod": "ng build --aot --app 1",
-    "build:aot:staging": "ng build --aot --app 1",
-    "build:aot:testing": "ng build --aot --app 1",
-    "build:server": "webpack",
-    "build:server:staging": "webpack",
-    "build:server:testing": "webpack",
-    "build:server:prod": "webpack -p",
-    "build:prod:ngsw": "npm run build:prod && npm run ngsw:config && npm run ngsw:copy",
-    "serve:prod": "npm run build:prod && node dist/server",
-    "serve:prod:ngsw": "npm run build:prod:ngsw && node dist/server",
-    "build:dist": "ng-packagr -p ng-package.json",
-    "ngsw:config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
-    "ngsw:copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
-    "test": "run-s test:ng test:e2e test:server",
-    "test:ng": "ng test --watch=false",
-    "test:e2e": "ng e2e",
-    "test:ng:watch": "ng test",
-    "test:server": "npm run build && mocha",
-    "lint": "eslint --fix . && ng lint --fix .",
-    "e2e": "ng e2e",
-    "heroku-postbuild": "npm run build:prod"
-  },
-  "main": "./dist/server.js",
+  "main": "bundles/ng-intercom.umd.js",
   "peerDependencies": {
     "@angular/core": ">=6.0.0 <7.0.0",
     "@angular/router": ">=6.0.0 <7.0.0"
@@ -134,5 +100,12 @@
     "rules": {
       "nomen": 0
     }
+  },
+  "module": "esm5/ng-intercom.js",
+  "es2015": "esm2015/ng-intercom.js",
+  "typings": "ng-intercom.d.ts",
+  "metadata": "ng-intercom.metadata.json",
+  "dependencies": {
+    "tslib": "^1.9.0"
   }
 }
